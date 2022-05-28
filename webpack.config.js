@@ -1,4 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const EslintWebpackPlugin = require("eslint-webpack-plugin");
+const StylelintWebpackPlugin = require("stylelint-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 let mode = "development";
@@ -23,6 +25,13 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: "./src/index.html",
+    }),
+    //linting
+    new StylelintWebpackPlugin({
+       files: '{**/*,*}.css'
+    }),
+    new EslintWebpackPlugin({
+      files: '{**/*,*}.{tsx, js, ts}'
     }),
   ],
   module: {
